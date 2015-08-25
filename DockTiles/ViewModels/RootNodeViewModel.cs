@@ -25,6 +25,7 @@ namespace DockTiles.ViewModels
         }
 
         protected Dictionary<object, IDockTile> ItemToDocktileMap;
+        protected Dictionary<object, IDockTile> 
 
 
         public void AddTile(Object item, Object targetItem, DockTileDirection dockDirection)

@@ -1,7 +1,7 @@
-﻿<Application x:Class="DockTiles.App"
+﻿<Application x:Class="DockTile.Sample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DockTiles"
+             xmlns:local="clr-namespace:DockTile.Sample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

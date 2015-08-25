@@ -12,5 +12,6 @@ namespace DockTiles.Interfaces
         IDockTile TreeRoot { get; set; }
         bool RemoveTile(Object tile);
         void AddTile(Object item, Object targetItem, DockTileDirection dockDirection);
+        //Implement tree manipiulation. 
     }
 }

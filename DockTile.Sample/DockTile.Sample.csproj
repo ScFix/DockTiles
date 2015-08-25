@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2570AACA-23C1-4AFD-8895-C55BF40123C5}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9C7E6DD5-ABBA-4F2A-8E4A-6711210A089D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DockTiles</RootNamespace>
-    <AssemblyName>DockTiles</AssemblyName>
+    <RootNamespace>DockTile.Sample</RootNamespace>
+    <AssemblyName>DockTile.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,12 +34,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,44 +53,27 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IDockTile.cs" />
-    <Compile Include="Interfaces\IDockTileRoot.cs" />
-    <Compile Include="Interfaces\ISplitDockTile.cs" />
-    <Compile Include="Models\DockTileDirection.cs" />
-    <Compile Include="ViewModels\HorizontalSplitViewModel.cs" />
-    <Compile Include="ViewModels\LeafViewModel.cs" />
-    <Compile Include="ViewModels\RootNodeViewModel.cs" />
-    <Compile Include="ViewModels\VerticalSplitViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\DockTileRootView.xaml.cs">
-      <DependentUpon>DockTileRootView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HorizontalSplitView.xaml.cs">
-      <DependentUpon>HorizontalSplitView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LeafView.xaml.cs">
-      <DependentUpon>LeafView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VeritcleSplitView.xaml.cs">
-      <DependentUpon>VeritcleSplitView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="DockTileResource.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DockTileRootView.xaml">
       <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ViewModels\SampleViewModel.cs" />
+    <Compile Include="Views\SampleView.xaml.cs">
+      <DependentUpon>SampleView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\HorizontalSplitView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LeafView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VeritcleSplitView.xaml">
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\SampleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +101,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DockTiles\DockTiles.csproj">
+      <Project>{2570aaca-23c1-4afd-8895-c55bf40123c5}</Project>
+      <Name>DockTiles</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
