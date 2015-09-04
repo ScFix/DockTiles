@@ -9,7 +9,7 @@
              d:DesignHeight="300"
              d:DesignWidth="300">
     <UserControl.DataContext>
-        <vm:RootNodeViewModel />
+        <vm:DockTileManagerViewModel />
     </UserControl.DataContext>
     <Grid>
         <ContentPresenter Content="{Binding TreeRoot}"/>

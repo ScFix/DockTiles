@@ -55,12 +55,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IDockTile.cs" />
-    <Compile Include="Interfaces\IDockTileRoot.cs" />
+    <Compile Include="Interfaces\IDockTileManager.cs" />
+    <Compile Include="Interfaces\IDockTileParent.cs" />
+    <Compile Include="Interfaces\IDocktileViewable.cs" />
     <Compile Include="Interfaces\ISplitDockTile.cs" />
     <Compile Include="Models\DockTileDirection.cs" />
+    <Compile Include="ViewModels\DockTileBase.cs" />
     <Compile Include="ViewModels\HorizontalSplitViewModel.cs" />
     <Compile Include="ViewModels\LeafViewModel.cs" />
-    <Compile Include="ViewModels\RootNodeViewModel.cs" />
+    <Compile Include="ViewModels\DockTileManagerViewModel.cs" />
+    <Compile Include="ViewModels\RootDockTile.cs" />
+    <Compile Include="ViewModels\SplitDockTileViewModel.cs" />
     <Compile Include="ViewModels\VerticalSplitViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\DockTileRootView.xaml.cs">

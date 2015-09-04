@@ -1,17 +1,18 @@
-﻿using DockTiles.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DockTiles.Interfaces;
 using DockTiles.Models;
 
 namespace DockTiles.ViewModels
 {
-    public class LeafViewModel : DockTileBase
+    public class RootDockTile : DockTileBase, IDockTileParent
     {
-        private object _Item;
-        public object Item
+
+        private IDockTile _Item;
+        public IDockTile Item
         {
             get
             {
@@ -24,9 +25,15 @@ namespace DockTiles.ViewModels
                     _Item = value;
                     OnPropertyChanged("Item");
                 }
-
             }
         }
 
+        public void ReplaceNode(IDockTile CurrentNode, IDockTile nd)
+        {
+            if (Item == CurrentNode)
+            {
+                Item = nd;
+            }
+        }
     }
 }

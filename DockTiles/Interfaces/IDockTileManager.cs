@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace DockTiles.Interfaces
 {
-    public interface IDockTileRoot
+    public interface IDockTileManager
     {
         IDockTile TreeRoot { get; set; }
         bool RemoveTile(Object tile);
         void AddTile(Object item, Object targetItem, DockTileDirection dockDirection);
+
         //Implement tree manipiulation. 
     }
 }

@@ -13,7 +13,10 @@ namespace DockTiles.ViewModels
 
         protected void OnPropertyChanged(String propertyName)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
