@@ -19,7 +19,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <ContentPresenter Content="{Binding LeftNode}" />
-        <GridSplitter Grid.Row="1" />
+        <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" />
         <ContentPresenter Grid.Row="2"
                           Content="{Binding RightNode}" />
     </Grid>
