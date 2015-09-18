@@ -18,7 +18,7 @@ namespace DockTiles.Views
     /// <summary>
     /// Interaction logic for HorizontalSplitView.xaml
     /// </summary>
-    public partial class HorizontalSplitView : UserControl
+    internal partial class HorizontalSplitView : UserControl
     {
         public HorizontalSplitView()
         {

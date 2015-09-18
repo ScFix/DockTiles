@@ -18,7 +18,7 @@ namespace DockTiles.Views
     /// <summary>
     /// Interaction logic for DockTileRootView.xaml
     /// </summary>
-    public partial class DockTileRootView : UserControl
+    internal partial class DockTileRootView : UserControl
     {
         public DockTileRootView()
         {

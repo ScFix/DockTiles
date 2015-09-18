@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DockTiles.Interfaces
 {
-    public interface IDockTileParent
+    public interface IDockTileParent : IDockTile
     {
         void ReplaceNode(IDockTile CurrentNode, IDockTile nd);
     }

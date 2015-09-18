@@ -20,7 +20,10 @@
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
     <Grid>
-
+        <ContentPresenter Content="{Binding View}" />
     </Grid>
 </Window>

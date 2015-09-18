@@ -18,7 +18,7 @@ namespace DockTiles.Views
     /// <summary>
     /// Interaction logic for LeafView.xaml
     /// </summary>
-    public partial class LeafView : UserControl
+    internal partial class LeafView : UserControl
     {
         public LeafView()
         {

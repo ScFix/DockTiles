@@ -21,6 +21,7 @@ namespace DockTileTest
             manager.AddTile(obj1, obj3, DockTileDirection.Right);
             Assert.AreEqual(true, manager.TreeRoot is RootDockTile);
             Assert.AreEqual(true, (manager.TreeRoot as RootDockTile).Item is ISplitDockTile);
+            manager.AddTile(obj2, obj2, DockTileDirection.Right);
         }
     }
 }

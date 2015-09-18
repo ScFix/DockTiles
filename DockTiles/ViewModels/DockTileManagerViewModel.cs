@@ -11,18 +11,10 @@ namespace DockTiles.ViewModels
     public class DockTileManagerViewModel : ViewModelBase, IDockTileManager
     {
         #region Properties
-        private IDockTile _TreeRoot;
+        private IDockTileParent _TreeRoot;
         public IDockTile TreeRoot
         {
             get { return _TreeRoot; }
-            set
-            {
-                if (_TreeRoot != value)
-                {
-                    _TreeRoot = value;
-                    OnPropertyChanged("TreeRoot");
-                }
-            }
         }
         #endregion //Properties
 
@@ -42,7 +34,7 @@ namespace DockTiles.ViewModels
             ObjectToDocktileMap.Add(rootView, dockTile);
 
             _TreeRoot = new RootDockTile() { Item = dockTile };
-
+            dockTile.Parent = _TreeRoot;
         }
         #endregion //Constructor
 
@@ -72,7 +64,7 @@ namespace DockTiles.ViewModels
             ObjectToDocktileMap.TryGetValue(tile, out baseDockTile);
             if (baseDockTile != null)
             {
-                baseDockTile.Parent.RemoveDockTile(baseDockTile);
+                (baseDockTile.Parent as ISplitDockTile).RemoveDockTile(baseDockTile);
                 return true;
             }
             return false;

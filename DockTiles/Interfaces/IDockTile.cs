@@ -9,7 +9,7 @@ namespace DockTiles.Interfaces
 {
     public interface IDockTile
     {
-        ISplitDockTile Parent { get; set; }
+        IDockTileParent Parent { get; set; }
 
         void Dock(IDockTile item, DockTileDirection dockDirection);
     }

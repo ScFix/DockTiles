@@ -10,8 +10,8 @@ namespace DockTiles.ViewModels
 {
     public class DockTileBase : ViewModelBase, IDockTile
     {
-        private ISplitDockTile _Parent;
-        public ISplitDockTile Parent
+        private IDockTileParent _Parent;
+        public IDockTileParent Parent
         {
             get
             {

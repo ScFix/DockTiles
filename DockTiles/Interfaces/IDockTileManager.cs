@@ -9,7 +9,7 @@ namespace DockTiles.Interfaces
 {
     public interface IDockTileManager
     {
-        IDockTile TreeRoot { get; set; }
+        IDockTile TreeRoot { get; }
         bool RemoveTile(Object tile);
         void AddTile(Object item, Object targetItem, DockTileDirection dockDirection);
 

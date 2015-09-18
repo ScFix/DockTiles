@@ -7,6 +7,9 @@
     <DataTemplate DataType="{x:Type vm:LeafViewModel}">
         <v:LeafView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RootDockTile}">
+        <v:LeafView />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:DockTileManagerViewModel}">
         <v:DockTileRootView />
     </DataTemplate>

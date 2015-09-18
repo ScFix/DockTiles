@@ -18,7 +18,7 @@ namespace DockTiles.Views
     /// <summary>
     /// Interaction logic for VeritcleSplitView.xaml
     /// </summary>
-    public partial class VeritcleSplitView : UserControl
+    internal partial class VeritcleSplitView : UserControl
     {
         public VeritcleSplitView()
         {

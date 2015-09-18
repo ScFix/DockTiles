@@ -54,6 +54,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\DockTileException.cs" />
     <Compile Include="Interfaces\IDockTile.cs" />
     <Compile Include="Interfaces\IDockTileManager.cs" />
     <Compile Include="Interfaces\IDockTileParent.cs" />

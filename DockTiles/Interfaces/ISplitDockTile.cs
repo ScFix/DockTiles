@@ -7,7 +7,7 @@ using DockTiles.ViewModels;
 
 namespace DockTiles.Interfaces
 {
-    public interface ISplitDockTile : IDockTile, IDockTileParent
+    public interface ISplitDockTile : IDockTileParent
     {
         IDockTile LeftNode { get; set; }
         IDockTile RightNode { get; set; }
