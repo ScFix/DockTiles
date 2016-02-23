@@ -44,6 +44,11 @@ namespace DockTiles.ViewModels
 			// NOTE(MATTHEW): if we have the item in the map and the person is not docking an item to itself. 
 			if (baseItem != item && ObjectToDocktileMap.ContainsKey(baseItem))
 			{
+				if (ObjectToDocktileMap.ContainsKey(item))
+				{
+					RemoveTile(item);
+				}
+
 				IDockTile baseDockTile = null;
 				IDockTile dockedItem = new LeafViewModel() { Item = item };
 				ObjectToDocktileMap.TryGetValue(baseItem, out baseDockTile);
@@ -65,6 +70,7 @@ namespace DockTiles.ViewModels
 			if (baseDockTile != null)
 			{
 				(baseDockTile.Parent as ISplitDockTile).RemoveDockTile(baseDockTile);
+				ObjectToDocktileMap.Remove(tile);
 				return true;
 			}
 			return false;

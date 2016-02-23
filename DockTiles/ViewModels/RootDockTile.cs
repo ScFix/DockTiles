@@ -8,32 +8,34 @@ using DockTiles.Models;
 
 namespace DockTiles.ViewModels
 {
-    public class RootDockTile : DockTileBase, IDockTileParent
-    {
+	public class RootDockTile : DockTileBase, IDockTileParent
+	{
 
-        private IDockTile _Item;
-        public IDockTile Item
-        {
-            get
-            {
-                return _Item;
-            }
-            set
-            {
-                if (_Item != value)
-                {
-                    _Item = value;
-                    OnPropertyChanged("Item");
-                }
-            }
-        }
+		private IDockTile _Item;
+		public IDockTile Item
+		{
+			get
+			{
+				return _Item;
+			}
+			set
+			{
+				if (_Item != value)
+				{
+					_Item = value;
+					OnPropertyChanged("Item");
+				}
+			}
+		}
 
-        public void ReplaceNode(IDockTile CurrentNode, IDockTile nd)
-        {
-            if (Item == CurrentNode)
-            {
-                Item = nd;
-            }
-        }
-    }
+		public void ReplaceNode(IDockTile CurrentNode, IDockTile nd)
+		{
+			if (Item == CurrentNode)
+			{
+				Item.Parent = null;
+				Item = nd;
+				Item.Parent = this;
+			}
+		}
+	}
 }

@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\IDocktileViewable.cs" />
     <Compile Include="Interfaces\ISplitDockTile.cs" />
     <Compile Include="Models\DockTileDirection.cs" />
+    <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModels\DockTileBase.cs" />
     <Compile Include="ViewModels\HorizontalSplitViewModel.cs" />
     <Compile Include="ViewModels\LeafViewModel.cs" />
