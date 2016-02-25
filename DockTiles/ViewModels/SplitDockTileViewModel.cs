@@ -62,7 +62,7 @@ namespace DockTiles.ViewModels
 					nd.Parent = this;
 				}
 			}
-			
+
 		}
 
 		public void RemoveDockTile(IDockTile dockTile)

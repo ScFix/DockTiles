@@ -39,19 +39,20 @@ namespace DockTiles.ViewModels
 		#endregion //Constructor
 
 		#region Methods
-		public void AddTile(Object baseItem, Object item, DockTileDirection dockDirection)
+		/// <summary>
+		/// Adds a new Item to the DockTile Configuration
+		/// </summary>
+		/// <param name="destinationItem">This is the base item that the new item will dock to</param>
+		/// <param name="item">This is the item that you wish to display, this item cannot already be apart of the DockTiles</param>
+		/// <param name="dockDirection">The basic cardinal direction of that the item will dock to the base item</param>
+		public void AddTile(Object destinationItem, Object item, DockTileDirection dockDirection)
 		{
 			// NOTE(MATTHEW): if we have the item in the map and the person is not docking an item to itself. 
-			if (baseItem != item && ObjectToDocktileMap.ContainsKey(baseItem))
+			if (destinationItem != item && ObjectToDocktileMap.ContainsKey(destinationItem))
 			{
-				if (ObjectToDocktileMap.ContainsKey(item))
-				{
-					RemoveTile(item);
-				}
-
 				IDockTile baseDockTile = null;
 				IDockTile dockedItem = new LeafViewModel() { Item = item };
-				ObjectToDocktileMap.TryGetValue(baseItem, out baseDockTile);
+				ObjectToDocktileMap.TryGetValue(destinationItem, out baseDockTile);
 				ObjectToDocktileMap.Add(item, dockedItem);
 				if (baseDockTile.Parent != null)
 				{
@@ -62,7 +63,11 @@ namespace DockTiles.ViewModels
 
 		}
 
-
+		/// <summary>
+		/// Removes Object from DockTiles
+		/// </summary>
+		/// <param name="tile">The object that will be removed if it is in the Tiles</param>
+		/// <returns></returns>
 		public bool RemoveTile(Object tile)
 		{
 			IDockTile baseDockTile = null;
@@ -76,6 +81,20 @@ namespace DockTiles.ViewModels
 			return false;
 		}
 
+		/// <summary>
+		/// This will move an item to the new lovation.
+		/// </summary>
+		/// <param name="item"></param>
+		/// <param name="destinationItem"></param>
+		/// <param name="dockDirection"></param>
+		public void MoveTile(Object destinationItem, Object item, DockTileDirection dockDirection)
+		{
+			if (ObjectToDocktileMap.ContainsKey(item))
+			{
+				RemoveTile(item);
+				AddTile(destinationItem, item, dockDirection);
+			}
+		}
 		#endregion //Methods
 
 	}
