@@ -53,42 +53,66 @@ namespace DockTile.Sample.ViewModels
 		public void Drop(IDropInfo dropInfo)
 		{
 			// TODO(Matthew) clean this up a bit
-			double Height = dropInfo.VisualTarget.RenderSize.Height;
-			double Width = dropInfo.VisualTarget.RenderSize.Width;
-			Point center = new Point(Width / 2, Height / 2);
-			double x = dropInfo.DropPosition.X;
-			double y = dropInfo.DropPosition.Y;
-			x = x - center.X;
-			y = y - center.Y;
-
-			Matrix v = new Matrix(x, y, 0, 0, 0, 0);
-			v.Rotate(45);
-			x = v.M11;
-			y = v.M12;
+			DockTileDirection direction = DetermineDirectionDropped(dropInfo.VisualTarget.RenderSize, dropInfo.DropPosition);
 
 			var data = dropInfo.Data;
 			var target = (dropInfo.VisualTarget as FrameworkElement).DataContext;
-
-			if (x > 0 && y < 0)
-			{
-				View.MoveTile(target, data, DockTileDirection.Top);
-			}
-			else if (x > 0 && y > 0)
-			{
-				View.MoveTile(target, data, DockTileDirection.Right);
-			}
-			else if (x <= 0 && y > 0)
-			{
-				View.MoveTile(target, data, DockTileDirection.Bottom);
-			}
-			else
-			{
-				View.MoveTile(target, data, DockTileDirection.Left);
-			}
-
+			View.MoveTile(target, data, direction);
 
 		}
 
+		private DockTileDirection DetermineDirectionDropped(Size element, Point dropPoint)
+		{
+			Point center = GetCenterOfSize(element);
+			Point pointFromOrigin = GetOffsetFromCenter(center, dropPoint);
+			Point rotatedPoint = RotatePointInRespectToCenter(pointFromOrigin);
+			DockTileDirection direction = QuadrentToDirection(rotatedPoint);
+			return direction;
+		}
+
+		private Point RotatePointInRespectToCenter(Point rotatePoint)
+		{
+			Point p = new Point();
+			Matrix v = new Matrix(rotatePoint.X, rotatePoint.Y, 0, 0, 0, 0);
+			v.Rotate(45);
+			p.X = v.M11;
+			p.Y = v.M12;
+
+			return p;
+		}
+
+		private Point GetOffsetFromCenter(Point center, Point dropPoint)
+		{
+			Point p = new Point();
+			p.X = dropPoint.X - center.X;
+			p.Y = dropPoint.Y - center.Y;
+			return p;
+		}
+
+		private DockTileDirection QuadrentToDirection(Point p)
+		{
+			if (p.X > 0 && p.Y < 0)
+			{
+				return DockTileDirection.Top;
+			}
+			else if (p.X > 0 && p.Y > 0)
+			{
+				return DockTileDirection.Right;
+			}
+			else if (p.X <= 0 && p.Y > 0)
+			{
+				return DockTileDirection.Bottom;
+			}
+			else
+			{
+				return DockTileDirection.Left;
+			}
+		}
+
+		private Point GetCenterOfSize(Size s)
+		{
+			return new Point(s.Width / 2, s.Height / 2);
+		}
 
 	}
 }
