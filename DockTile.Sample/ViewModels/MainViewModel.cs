@@ -42,8 +42,6 @@ namespace DockTile.Sample.ViewModels
 			View.AddTile(item1, item2, DockTileDirection.Top);
 			View.AddTile(item1, item3, DockTileDirection.Right);
 			View.AddTile(item1, item4, DockTileDirection.Right);
-
-
 		}
 
 		public void DragOver(IDropInfo dropInfo)
@@ -73,19 +71,19 @@ namespace DockTile.Sample.ViewModels
 
 			if (x > 0 && y < 0)
 			{
-				View.AddTile(target, data, DockTileDirection.Top);
+				View.MoveTile(target, data, DockTileDirection.Top);
 			}
 			else if (x > 0 && y > 0)
 			{
-				View.AddTile(target, data, DockTileDirection.Right);
+				View.MoveTile(target, data, DockTileDirection.Right);
 			}
 			else if (x <= 0 && y > 0)
 			{
-				View.AddTile(target, data, DockTileDirection.Bottom);
+				View.MoveTile(target, data, DockTileDirection.Bottom);
 			}
 			else
 			{
-				View.AddTile(target, data, DockTileDirection.Left);
+				View.MoveTile(target, data, DockTileDirection.Left);
 			}
 
 

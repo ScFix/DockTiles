@@ -48,6 +48,11 @@ namespace DockTiles.ViewModels
 		public void AddTile(Object destinationItem, Object item, DockTileDirection dockDirection)
 		{
 			// NOTE(MATTHEW): if we have the item in the map and the person is not docking an item to itself. 
+			if (ObjectToDocktileMap.ContainsKey(item) || ObjectToDocktileMap.ContainsValue(item as IDockTile))
+			{
+				// TODO(Matthew):  decide what the default behavior for this stuff truly is. 
+				throw new Exception();
+			}
 			if (destinationItem != item && ObjectToDocktileMap.ContainsKey(destinationItem))
 			{
 				IDockTile baseDockTile = null;
